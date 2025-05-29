@@ -18,7 +18,7 @@ export const enviarMensaje = async (to, subject, html) => {
       subject,
       html,
     });
-    console.log({ result });
+    //console.log({ result });
     return { ok: true, mensaje: "Mensaje enviado con exito" };
   } catch (error) {
     console.log(error)

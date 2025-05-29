@@ -2,8 +2,18 @@ import { request, response } from "express";
 
 import { enviarMensaje } from "../helpers/mailer.js";
 import user from "../models/user.js";
-export const Login = (req = request, res = response) => {
-    return res.send("Login");
+
+export const Login = async (req = request, res = response) => {
+    
+    const { email } = req.params
+    const { codigo } = req.body
+    
+    const userFind = await user.findOne({email, login_code: codigo})
+
+    if (!userFind) return res.status(400).json({ mensaje: `Usuario con correo ${email} y codigo ${codigo} no existe` });
+
+    return res.status(200).json({'msg' : 'Login Exitoso'})
+
 };
 
 export const generateCode = async (req = request, res = response) => {
