@@ -1,8 +1,8 @@
 import app from './app.js'
+console.log(process.env.PORT)
+const PORT = process.env.PORT || 4000
 
+app.listen(PORT, () => {
 
-
-app.listen(process.env.PORT || 3000, () => {
-
-    console.log("Servidor HTTP Activo")
+    console.log(`Server on ${PORT}`)
 })
